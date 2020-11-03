@@ -1,19 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{%static 'styles.css'%}" />
     <title>Submissions</title>
   </head>
   <body>
     <h1>Submissions</h1>
-    {% for contact in contacts %}
-    <div class="contact">
-      <p>Name: {{contact.name}}</p>
-      <p>Email: {{contact.email}}</p>
-      <p>Phone Number: {{contact.phone}}</p>
-      <p>Description: {{contact.description}}</p>
-    </div>
-    {% endfor %}
+    <table style="table-layout: fixed; width: 80%" id="s-table">
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Description</th>
+      </tr>
+
+      {% for contact in contacts %}
+      <tr>
+        <td>{{contact.name}}</td>
+        <td>{{contact.email}}</td>
+        <td>{{contact.phone}}</td>
+        <td>{{contact.description}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <br />
+    <button><a href="{%url 'index'%}">Go Back</a></button>
   </body>
 </html>

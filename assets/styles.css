@@ -1,0 +1,42 @@
+form{
+  width: 80%;
+  margin: 0 auto;
+}
+
+label,input{
+  display: inline-block;
+  margin-bottom: 30px;
+}
+
+label{
+  width: 30%;
+  text-align: right;
+}
+
+label+input, label+textarea {
+  width: 30%;
+  
+  margin: 0 30% 0 4%;
+}
+
+body{
+  text-align: center;
+  margin-top: 60px;
+}
+
+button{
+  margin-bottom: 30px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 15px;
+}
