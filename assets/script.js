@@ -1,7 +1,8 @@
 $(document).on("submit", "#post-form", function (e) {
+  e.preventDefault();
   $.ajax({
     type: "POST",
-    url: "{%url 'index' %}",
+    url: "",
     data: {
       name: $("#id_name").val(),
       email: $("#id_email").val(),
