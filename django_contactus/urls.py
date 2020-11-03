@@ -20,5 +20,6 @@ from contactus import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('submissions', views.submissions_view, name='submissions'),
     path('admin/', admin.site.urls),
 ]
