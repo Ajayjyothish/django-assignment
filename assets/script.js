@@ -2,7 +2,7 @@ $("#post-form").validate({
   rules: {
     name: {
       required: true,
-      minlength: 5,
+      minlength: 3,
     },
     email: {
       required: true,
@@ -17,7 +17,7 @@ $("#post-form").validate({
   messages: {
     name: {
       required: "Please put your full name.",
-      minlength: "C'mon full name please.",
+      minlength: "Three characters required.",
     },
     email: "A valid email please",
     phone: "Enter a 10 digit mobile number",
