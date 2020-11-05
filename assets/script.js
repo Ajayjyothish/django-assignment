@@ -1,47 +1,58 @@
-$("#post-form").validate({
-  rules: {
-    name: {
-      required: true,
-      minlength: 3,
-    },
-    email: {
-      required: true,
-      email: true,
-    },
-    phone: {
-      minlength: 10,
-      maxlength: 10,
-      number: true,
-    },
-  },
-  messages: {
-    name: {
-      required: "Please put your full name.",
-      minlength: "Three characters required.",
-    },
-    email: "A valid email please",
-    phone: "Enter a 10 digit mobile number",
-  },
-  submitHandler: function (form, event) {
-    event.preventDefault();
-    $.ajax({
-      type: form.method,
-      url: "",
-      data: {
-        name: $("#name").val(),
-        email: $("#email").val(),
-        phone: $("#phone").val(),
-        description: $("#description").val(),
-        csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
-        action: "post",
+$(function(){
+  $.validator.addMethod("alphabetsnspace", function(value, element) {
+    return this.optional(element) || /^[a-zA-Z ]*$/.test(value);
+  });
+  $("#post-form").validate({
+    rules: {
+      name: {
+        required: true,
+        minlength: 3,
+        alphabetsnspace: true
       },
-      success: function (json) {
-        document.getElementById("post-form").reset();
-        alert("success");
+      email: {
+        required: true,
+        email: true,
       },
-      error: function (xhr, errmsg, err) {
-        console.log(xhr.status + ": " + xhr.resposeText);
+      phone: {
+        minlength: 10,
+        maxlength: 10,
+        number: true,
       },
-    });
-  },
-});
+    },
+    messages: {
+      name: {
+        required: "Full name please.",
+        minlength: "Three characters required.",
+        alphabetsnspace: "Plese enter only letters"
+      },
+      email: "A valid email please",
+      phone: "Enter a 10 digit mobile number",
+    },
+    submitHandler: function (form, event) {
+      event.preventDefault();
+      $.ajax({
+        type: form.method,
+        url: "",
+        data: {
+          name: $("#name").val(),
+          email: $("#email").val(),
+          phone: $("#phone").val(),
+          description: $("#description").val(),
+          csrfmiddlewaretoken: $("input[name=csrfmiddlewaretoken]").val(),
+          action: "post",
+        },
+        success: function (json) {
+          document.getElementById("post-form").reset();
+          alert("success");
+        },
+        error: function (xhr, errmsg, err) {
+          console.log(xhr.status + ": " + xhr.resposeText);
+        },
+      });
+    },
+  });
+
+
+
+})
+
